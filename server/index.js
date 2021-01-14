@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const { CONNECTION_STRING, SESSION_SECRET } = process.env;
+const authCtrl = require('./controllers/authController');
 const PORT = 4000;
 const app = express();
 //---------------------------------------------------------------------
@@ -26,5 +27,8 @@ app.use(session({
     secret: SESSION_SECRET,
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 180 }
 }));
+
+//Endpoints
+app.post('/auth/register', authCtrl.register)
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`))
