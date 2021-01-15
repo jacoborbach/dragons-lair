@@ -22,7 +22,7 @@ module.exports = {
 
         const userTreasure = db.add_user_treasure(treasureURL, id);
 
-        res.status(200).send(userTreasure);
+        return res.status(200).send(userTreasure);
 
     }
 }
