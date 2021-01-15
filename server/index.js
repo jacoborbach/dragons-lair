@@ -35,6 +35,7 @@ app.post('/auth/login', authCtrl.login)
 app.get('/auth/logout', authCtrl.logout)
 
 //Dragon Endpoints
-app.get('/api/treasure/dragon', treasureCtrl.dragonTreasure)
+app.get('/api/treasure/dragon', treasureCtrl.dragonTreasure);
+app.get('/api/treasure/user', treasureCtrl.getUserTreasure);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`))
