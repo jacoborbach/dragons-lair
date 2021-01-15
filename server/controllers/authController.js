@@ -34,7 +34,7 @@ module.exports = {
         const { username, password } = req.body;
         const db = req.app.get('db');
 
-        const foundUser = db.get_user(username);
+        const foundUser = await db.get_user(username);
         const user = foundUser[0];
         if (!user) {
             return res.status(401).send('User not found. Please register as a new user before logging in.')
@@ -53,5 +53,9 @@ module.exports = {
         }
         res.status(200).send(req.session.user)
 
+    },
+    logout: async (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
     }
 }
