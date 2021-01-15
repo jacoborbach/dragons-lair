@@ -23,6 +23,10 @@ module.exports = {
         const userTreasure = db.add_user_treasure(treasureURL, id);
 
         return res.status(200).send(userTreasure);
+    },
+    getAllTreasure: async (req, res) => {
+        const getTreasure = await req.app.get('db').get_all_treasure()
 
+        res.status(200).send(getTreasure)
     }
 }
